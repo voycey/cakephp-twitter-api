@@ -67,6 +67,8 @@ $this->loadModel('Twitter.Twitter');
 $twitter = $this->Twitter->post('statuses/update',array('status'=>'This is an awesome status message');
 ```
 
+##### See the full list of endpoints at https://dev.twitter.com/docs/api/1.1
+
 #### There are also some handy functions I have put in Twitter.Helper:
 
 This will take the text of a tweet and parse all of the links, hashtags and usernames into links (courtesy of http://saturnboy.com/2010/02/parsing-twitter-with-regexp/), pass in the twitter->text part and it will output a
@@ -82,7 +84,7 @@ I have also added in a time calculator so you have Twitters "Posted 20h ago" or 
 function time_ago($date,$granularity=2) {}
 ```
 
-##### See the full list of endpoints at https://dev.twitter.com/docs/api/1.1
+
 
 Hope this helps - feel free to use / abuse this - since Twitter took all their public access off it can be quite confusing getting started with it
 
