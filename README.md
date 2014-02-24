@@ -51,7 +51,7 @@ This will get a different users 7 latest tweets:
 
 ```php
 $this->loadModel('Twitter.Twitter');
-$twitter = $this->Twitter->get('statuses/user_timeline', array('screen_name' => 'voycey', count' => 7));
+$twitter = $this->Twitter->get('statuses/user_timeline', array('screen_name' => 'voycey', 'count' => 7));
 ```
 
 And obviously you can do POST requests aswell, This will post an awesome message to your Twitter!
