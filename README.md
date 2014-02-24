@@ -1,5 +1,4 @@
 
-
 CakePHP Twitter Plugin for API v1.1
 =============================
 
@@ -18,7 +17,6 @@ Installation
 1. Install Abrahams twitteroauth library (I have forked the version I used - https://github.com/voycey/twitteroauth) into app/Vendor/twitteroauth (so you should have app/Vendor/twitteroauth/twitteroauth)
 2. Clone this repository into app/Plugin/Twitter
 3. Import the SQL file into your database using whatever method you prefer
-..* See notes below if you already have a general settings table you would prefer to use
 4. Edit app/Plugin/Config/bootstrap.php and put in your Consumer Key and Consumer Secret that you obtained from http://dev.twitter.com and your screen name.
 
 
@@ -85,4 +83,7 @@ function time_ago($date,$granularity=2) {}
 
 Hope this helps - feel free to use / abuse this - since Twitter took all their public access off it can be quite confusing getting started with it
 
+****Custom Settings Table
+
+If you want to use your own Settings Table you can change the $useTable variable in the Twitter Model and then make sure you change lines 50 onwards of TwittersController.php to match your databsase table structure.
 
