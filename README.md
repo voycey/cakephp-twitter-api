@@ -1,4 +1,3 @@
-
 CakePHP Twitter Plugin for API v1.1
 =============================
 
@@ -65,7 +64,7 @@ $this->loadModel('Twitter.Twitter');
 $twitter = $this->Twitter->post('statuses/update',array('status'=>'This is an awesome status message');
 ```
 
-**There are also some handy functions I have put in Twitter.Helper:**
+#### There are also some handy functions I have put in Twitter.Helper:
 
 This will take the text of a tweet and parse all of the links, hashtags and usernames into links (courtesy of http://saturnboy.com/2010/02/parsing-twitter-with-regexp/), pass in the twitter->text part and it will output a
 nicely formatted html snippet of the tweet.
@@ -83,7 +82,7 @@ function time_ago($date,$granularity=2) {}
 
 Hope this helps - feel free to use / abuse this - since Twitter took all their public access off it can be quite confusing getting started with it
 
-****Custom Settings Table
+#### Custom Settings Table
 
 If you want to use your own Settings Table you can change the $useTable variable in the Twitter Model and then make sure you change lines 50 onwards of TwittersController.php to match your databsase table structure.
 
