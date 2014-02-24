@@ -38,7 +38,7 @@ The basic usage of this is to instantiate a copy of the model (with either loadM
 https://dev.twitter.com/docs/api/1.1
 
 
-#### Examples:
+#### Basic Examples:
 
 This is the simplest usage of it - the default get() method fetches the tweets of the screen name you entered in bootstrap.php
 
@@ -82,6 +82,7 @@ I have also added in a time calculator so you have Twitters "Posted 20h ago" or 
 function time_ago($date,$granularity=2) {}
 ```
 
+##### See the full list of endpoints at https://dev.twitter.com/docs/api/1.1
 
 Hope this helps - feel free to use / abuse this - since Twitter took all their public access off it can be quite confusing getting started with it
 
