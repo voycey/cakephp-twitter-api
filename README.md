@@ -26,7 +26,8 @@ Ok so now you have the files in place you need to authorise your app with twitte
 
 1. Go to yourdomain.com/Twitter/authorise_twitter
 2. Login with your twitter details if asked if not you should be redirected back to the homepage and your app is now authorised.
-..* If you weren't redirected back to the homepage then you have probably missed a step - recheck.
+
+##### If you weren't redirected back to the homepage then you have probably missed a step - recheck.
 
 Usage
 -----
