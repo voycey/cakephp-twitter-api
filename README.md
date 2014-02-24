@@ -10,6 +10,8 @@ CakePHP 2.x Twitter API (V1.1) Plugin
 
 A plugin that takes care of all of the OAuth authentication and then fetches an OAuth Token (These are long lived and therefore can be used to display a twitter feed on your website or create a Twitter App / Interface.
 
+Gives a model that can be imported into your controllers to interact with any of the Twitter GET / POST endpoints.
+
 Installation
 ------------
 
