@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Cakephp-twitter-api-v1.1-full : CakePHP Twitter Plugin for API v1.1" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Cakephp-twitter-api-v1.1-full</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/voycey/CakePHP-Twitter-API-v1.1-Full">View on GitHub</a>
+
+          <h1 id="project_title">Cakephp-twitter-api-v1.1-full</h1>
+          <h2 id="project_tagline">CakePHP Twitter Plugin for API v1.1</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/voycey/CakePHP-Twitter-API-v1.1-Full/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/voycey/CakePHP-Twitter-API-v1.1-Full/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="cakephp-twitter-plugin-for-api-v11" class="anchor" href="#cakephp-twitter-plugin-for-api-v11"><span class="octicon octicon-link"></span></a>CakePHP Twitter Plugin for API v1.1</h1>
+
+<p>CakePHP 2.x Twitter API (V1.1) Plugin</p>
+
+<p><a href="https://github.com/Author" class="user-mention">@Author</a> Daniel Voyce<br>
+<a href="https://github.com/Date" class="user-mention">@Date</a> 24th February 2014<br>
+@Requires CakePHP 2.x (Tested on 2.4.3)<br>
+@Requires <a href="https://github.com/abraham/twitteroauth">https://github.com/abraham/twitteroauth</a> (Forked in my repos)<br></p>
+
+<p>A plugin that takes care of all of the OAuth authentication and then fetches an OAuth Token (These are long lived and therefore can be used to display a twitter feed on your website or create a Twitter App / Interface.</p>
+
+<p>Gives a model that can be imported into your controllers to interact with any of the Twitter GET / POST endpoints.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ol>
+<li>Install Abrahams twitteroauth library (I have forked the version I used - <a href="https://github.com/voycey/twitteroauth">https://github.com/voycey/twitteroauth</a>) into app/Vendor/twitteroauth (so you should have app/Vendor/twitteroauth/twitteroauth)</li>
+<li>Clone this repository into app/Plugin/Twitter</li>
+<li>Import the SQL file into your database using whatever method you prefer</li>
+<li>Edit app/Plugin/Config/bootstrap.php and put in your Consumer Key and Consumer Secret that you obtained from <a href="http://dev.twitter.com">http://dev.twitter.com</a> and your screen name.</li>
+</ol><h2>
+<a name="set-up" class="anchor" href="#set-up"><span class="octicon octicon-link"></span></a>Set-up</h2>
+
+<p>Ok so now you have the files in place you need to authorise your app with twitter:</p>
+
+<ol>
+<li>Go to yourdomain.com/Twitter/authorise_twitter</li>
+<li>Login with your twitter details if asked if not you should be redirected back to the homepage and your app is now authorised.</li>
+</ol><h5>
+<a name="if-you-werent-redirected-back-to-the-homepage-then-you-have-probably-missed-a-step---recheck" class="anchor" href="#if-you-werent-redirected-back-to-the-homepage-then-you-have-probably-missed-a-step---recheck"><span class="octicon octicon-link"></span></a>If you weren't redirected back to the homepage then you have probably missed a step - recheck.</h5>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>The basic usage of this is to instantiate a copy of the model (with either loadModel or by putting it in your $uses array) and then either use the GET or POST methods provided against whichever twitter end point you want:
+<a href="https://dev.twitter.com/docs/api/1.1">https://dev.twitter.com/docs/api/1.1</a></p>
+
+<h4>
+<a name="basic-examples" class="anchor" href="#basic-examples"><span class="octicon octicon-link"></span></a>Basic Examples:</h4>
+
+<p>This is the simplest usage of it - the default get() method fetches the tweets of the screen name you entered in bootstrap.php</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Twitter.Twitter'</span><span class="p">);</span>
+<span class="nv">$twitter</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Twitter</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</pre></div>
+
+<p>This will get a different users 7 latest tweets:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Twitter.Twitter'</span><span class="p">);</span>
+<span class="nv">$twitter</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Twitter</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'statuses/user_timeline'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'screen_name'</span> <span class="o">=&gt;</span> <span class="s1">'voycey'</span><span class="p">,</span> <span class="s1">'count'</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">));</span>
+</pre></div>
+
+<p>And obviously you can do POST requests aswell, This will post an awesome message to your Twitter!</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Twitter.Twitter'</span><span class="p">);</span>
+<span class="nv">$twitter</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Twitter</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">();</span>
+</pre></div>
+
+<p>This will post a custom message to your Twitter:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadModel</span><span class="p">(</span><span class="s1">'Twitter.Twitter'</span><span class="p">);</span>
+<span class="nv">$twitter</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Twitter</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">'statuses/update'</span><span class="p">,</span><span class="k">array</span><span class="p">(</span><span class="s1">'status'</span><span class="o">=&gt;</span><span class="s1">'This is an awesome status message'</span><span class="p">);</span>
+</pre></div>
+
+<h5>
+<a name="see-the-full-list-of-endpoints-at-httpsdevtwittercomdocsapi11" class="anchor" href="#see-the-full-list-of-endpoints-at-httpsdevtwittercomdocsapi11"><span class="octicon octicon-link"></span></a>See the full list of endpoints at <a href="https://dev.twitter.com/docs/api/1.1">https://dev.twitter.com/docs/api/1.1</a>
+</h5>
+
+<h4>
+<a name="there-are-also-some-handy-functions-i-have-put-in-twitterhelper" class="anchor" href="#there-are-also-some-handy-functions-i-have-put-in-twitterhelper"><span class="octicon octicon-link"></span></a>There are also some handy functions I have put in Twitter.Helper:</h4>
+
+<p>This will take the text of a tweet and parse all of the links, hashtags and usernames into links (courtesy of <a href="http://saturnboy.com/2010/02/parsing-twitter-with-regexp/">http://saturnboy.com/2010/02/parsing-twitter-with-regexp/</a>), pass in the twitter-&gt;text part and it will output a
+nicely formatted html snippet of the tweet.</p>
+
+<div class="highlight highlight-php"><pre><span class="k">public</span> <span class="k">function</span> <span class="nf">parse_tweet</span><span class="p">(</span><span class="nv">$tweet_text</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+
+<p>I have also added in a time calculator so you have Twitters "Posted 20h ago" or "Posted 3 days ago"</p>
+
+<div class="highlight highlight-php"><pre><span class="k">function</span> <span class="nf">time_ago</span><span class="p">(</span><span class="nv">$date</span><span class="p">,</span><span class="nv">$granularity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+
+<p>Hope this helps - feel free to use / abuse this - since Twitter took all their public access off it can be quite confusing getting started with it</p>
+
+<h4>
+<a name="custom-settings-table" class="anchor" href="#custom-settings-table"><span class="octicon octicon-link"></span></a>Custom Settings Table</h4>
+
+<p>If you want to use your own Settings Table you can change the $useTable variable in the Twitter Model and then make sure you change lines 50 onwards of TwittersController.php to match your databsase table structure.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Cakephp-twitter-api-v1.1-full maintained by <a href="https://github.com/voycey">voycey</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
