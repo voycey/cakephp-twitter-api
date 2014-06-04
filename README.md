@@ -22,7 +22,7 @@ Installation
 5. Load the plugin in bootstrap.php of your app: 
 
 ```php
-CakePlugin::load(array(Twitter' => array('routes' => true, 'bootstrap' => true)) 
+CakePlugin::load(array('Twitter' => array('routes' => true, 'bootstrap' => true)) 
 ```
 
 Set-up
