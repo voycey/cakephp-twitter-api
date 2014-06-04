@@ -19,7 +19,11 @@ Installation
 2. Clone this repository into app/Plugin/Twitter
 3. Import the SQL file into your database using whatever method you prefer
 4. Edit app/Plugin/Config/bootstrap.php and put in your Consumer Key and Consumer Secret that you obtained from http://dev.twitter.com and your screen name.
-5. Load the plugin in bootstrap.php of your app: CakePlugin::load(array(Twitter' => array('routes' => true, 'bootstrap' => true)) 
+5. Load the plugin in bootstrap.php of your app: 
+
+```php
+CakePlugin::load(array(Twitter' => array('routes' => true, 'bootstrap' => true)) 
+```
 
 Set-up
 ------
